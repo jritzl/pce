@@ -1,0 +1,60 @@
+data_reshape1 = reshape(tryaa(:,7),142,142,193);
+data_reshape2 = reshape(estimation5(:,7),142,142,193);
+data_reshape3 = reshape(abs(tryaa(:,7)-estimation5(:,7)),142,142,193);
+data_reshape4 = reshape(tryaa(:,10),142,142,193);
+data_reshape5 = reshape(estimation5(:,10),142,142,193);
+data_reshape6 = reshape(abs(tryaa(:,10)-estimation5(:,10)),142,142,193)
+
+
+t=tiledlayout(3, 3);
+% Plot in the first tile
+nexttile;
+imagesc(flipud(squeeze(data_reshape1(:,71,:))));
+h = colorbar;
+ylabel('Uncertainty Set 1')
+title(h, 'W/cm^{2}')
+title('Exact Computational Model')
+caxis([0,30]);
+% Plot in the second tile
+nexttile;
+imagesc(flipud(squeeze(data_reshape2(:,71,:))));
+caxis([0,30]);
+h = colorbar;
+title(h, 'W/cm^{2}')
+title('Prediction')
+
+% Plot in the third tile
+nexttile;
+imagesc(flipud(squeeze(data_reshape3(:,71,:))));
+caxis([0,1]);
+title('Absolute Difference')
+h = colorbar;
+title(h, 'W/cm^{2}')
+% Plot in the fourth tile
+
+nexttile;
+imagesc(flipud(squeeze(data_reshape4(:,71,:))));
+title(' ')
+caxis([0,30]);
+h = colorbar;
+ylabel('Uncertainty Set 2')
+title(h, 'W/cm^{2}')
+
+% Plot in the fifth tile
+
+nexttile;
+imagesc(flipud(squeeze(data_reshape5(:,71,:))));
+title(' ')
+caxis([0,30]);
+h = colorbar;
+title(h, 'W/cm^{2}')
+% Plot in the sixth tile
+
+nexttile;
+imagesc(flipud(squeeze(data_reshape6(:,71,:))));
+title(' ')
+caxis([0,1]);
+h = colorbar;
+
+t.TileSpacing = 'tight';
+t.Padding = 'tight';
