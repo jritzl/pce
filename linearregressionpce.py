@@ -16,8 +16,8 @@ print(polynomials.size)
 #simulation results
 mat_contents = sio.loadmat("C:\\Users\\Yunus\\Desktop\\pyy\\model4results.mat")
 evals = mat_contents['data']
-mat_contents = sio.loadmat("C:\\Users\\Yunus\\Desktop\\pyy\\model4samples.mat")
-samples = mat_contents['data']
+mat_contents_input = sio.loadmat("C:\\Users\\Yunus\\Desktop\\pyy\\model4samples.mat")
+samples = mat_contents_input['data']
 
 
 
