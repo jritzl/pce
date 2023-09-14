@@ -1,0 +1,141 @@
+
+%tryaa the original simulation result, estimation5 is the estimation
+
+data_reshape1 = reshape(tryaa(:,7),142,142,193);
+data_reshape2 = reshape(estimation5(:,7),142,142,193);
+data_reshape3 = reshape(abs(tryaa(:,7)-estimation5(:,7)),142,142,193);
+data_reshape4 = reshape(tryaa(:,10),142,142,193);
+data_reshape5 = reshape(estimation5(:,10),142,142,193);
+data_reshape6 = reshape(abs(tryaa(:,10)-estimation5(:,10)),142,142,193)
+
+
+t=tiledlayout(3, 3);
+% Plot in the first tile
+nexttile;
+imagesc(flipud(squeeze(data_reshape1(:,71,:))));
+h = colorbar;
+ylabel('Uncertainty Set 1')
+title(h, 'W/cm^{2}')
+title('Exact Computational Model')
+caxis([0,30]);
+hold on
+numberArray = new_slice ; % Your numeric array here
+% Define levels for contour lines (adjust as needed)
+contourLevels = unique(numberArray);
+% Create a green colormap with as many colors as there are contour levels
+colors = custom_colormap; % You can choose any green-based colormap
+% Create a grid of coordinates for the contour plot
+[X, Y] = meshgrid(1:size(numberArray, 2), 1:size(numberArray, 1));
+% Plot contour lines with different colors
+% This ensures that each contour line is plotted with a different color
+for i = 1:length(contourLevels)
+contour(X, Y, flipud(numberArray), [contourLevels(i), contourLevels(i)], 'LineWidth', 1, 'Color', colors(i,:));
+end
+hold off
+% Plot in the second tile
+nexttile;
+imagesc(flipud(squeeze(data_reshape2(:,71,:))));
+caxis([0,30]);
+h = colorbar;
+title(h, 'W/cm^{2}')
+title('Prediction')
+hold on
+numberArray = new_slice;  % Your numeric array here
+% Define levels for contour lines (adjust as needed)
+contourLevels = unique(numberArray);
+% Create a green colormap with as many colors as there are contour levels
+colors = custom_colormap; % You can choose any green-based colormap
+% Create a grid of coordinates for the contour plot
+[X, Y] = meshgrid(1:size(numberArray, 2), 1:size(numberArray, 1));
+% Plot contour lines with different colors
+% This ensures that each contour line is plotted with a different color
+for i = 1:length(contourLevels)
+contour(X, Y, flipud(numberArray), [contourLevels(i), contourLevels(i)], 'LineWidth', 1, 'Color', colors(i,:));
+end
+hold off
+% Plot in the third tile
+nexttile;
+imagesc(flipud(squeeze(data_reshape3(:,71,:))));
+caxis([0,1]);
+title('Absolute Difference')
+h = colorbar;
+title(h, 'W/cm^{2}')
+% Plot in the fourth tile
+hold on
+numberArray = new_slice ; % Your numeric array here
+% Define levels for contour lines (adjust as needed)
+contourLevels = unique(numberArray);
+% Create a green colormap with as many colors as there are contour levels
+colors = custom_colormap; % You can choose any green-based colormap
+% Create a grid of coordinates for the contour plot
+[X, Y] = meshgrid(1:size(numberArray, 2), 1:size(numberArray, 1));
+% Plot contour lines with different colors
+% This ensures that each contour line is plotted with a different color
+for i = 1:length(contourLevels)
+contour(X, Y, flipud(numberArray), [contourLevels(i), contourLevels(i)], 'LineWidth', 1, 'Color', colors(i,:));
+end
+hold off
+nexttile;
+imagesc(flipud(squeeze(data_reshape4(:,71,:))));
+title(' ')
+caxis([0,30]);
+h = colorbar;
+ylabel('Uncertainty Set 2')
+title(h, 'W/cm^{2}')
+% Plot in the fifth tile
+hold on
+numberArray = new_slice ; % Your numeric array here
+% Define levels for contour lines (adjust as needed)
+contourLevels = unique(numberArray);
+% Create a green colormap with as many colors as there are contour levels
+colors = custom_colormap; % You can choose any green-based colormap
+% Create a grid of coordinates for the contour plot
+[X, Y] = meshgrid(1:size(numberArray, 2), 1:size(numberArray, 1));
+% Plot contour lines with different colors
+% This ensures that each contour line is plotted with a different color
+for i = 1:length(contourLevels)
+contour(X, Y, flipud(numberArray),[contourLevels(i), contourLevels(i)], 'LineWidth', 1, 'Color', colors(i,:));
+end
+hold off
+nexttile;
+imagesc(flipud(squeeze(data_reshape5(:,71,:))));
+title(' ')
+caxis([0,30]);
+h = colorbar;
+title(h, 'W/cm^{2}')
+% Plot in the sixth tile
+hold on
+numberArray = new_slice; % Your numeric array here
+% Define levels for contour lines (adjust as needed)
+contourLevels = unique(numberArray);
+% Create a green colormap with as many colors as there are contour levels
+colors = custom_colormap; % You can choose any green-based colormap
+% Create a grid of coordinates for the contour plot
+[X, Y] = meshgrid(1:size(numberArray, 2), 1:size(numberArray, 1));
+% Plot contour lines with different colors
+% This ensures that each contour line is plotted with a different color
+for i = 1:length(contourLevels)
+contour(X, Y, flipud(numberArray), [contourLevels(i), contourLevels(i)], 'LineWidth', 1, 'Color', colors(i,:));
+end
+hold off
+nexttile;
+imagesc(flipud(squeeze(data_reshape6(:,71,:))));
+title(' ')
+caxis([0,1]);
+h = colorbar;
+hold on
+numberArray = new_slice; % Your numeric array here
+% Define levels for contour lines (adjust as needed)
+contourLevels = unique(numberArray);
+% Create a green colormap with as many colors as there are contour levels
+colors = custom_colormap; % You can choose any green-based colormap
+% Create a grid of coordinates for the contour plot
+[X, Y] = meshgrid(1:size(numberArray, 2), 1:size(numberArray, 1));
+% Plot contour lines with different colors
+% This ensures that each contour line is plotted with a different color
+for i = 1:length(contourLevels)
+contour(X, Y, flipud(numberArray), [contourLevels(i), contourLevels(i)], 'LineWidth', 1, 'Color', colors(i,:));
+end
+hold off
+t.TileSpacing = 'tight';
+t.Padding = 'tight';
