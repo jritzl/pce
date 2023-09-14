@@ -1,3 +1,35 @@
+resize_img = reshape(cfaImage,142,142,193);
+new_slice = squeeze(resize_img(:,71,:));
+new_slice = squeeze(resize_img(:,71,:));
+logicalIndices = (new_slice < 2);
+new_slice(logicalIndices) = 1;
+logicalIndices1 = (new_slice ==2);
+new_slice(logicalIndices1) = 2;
+logicalIndices2 = (new_slice ==3);
+new_slice(logicalIndices2) = 3;
+logicalIndices3 = (new_slice ==4);
+new_slice(logicalIndices3) = 1;
+logicalIndices4 = (new_slice ==5);
+new_slice(logicalIndices4) = 1;
+logicalIndices5 = (new_slice ==6);
+new_slice(logicalIndices5) = 1;
+logicalIndices6 = (new_slice ==7);
+new_slice(logicalIndices6) = 1;
+logicalIndices7 = (new_slice ==8);
+new_slice(logicalIndices7) = 1;
+logicalIndices8 = (new_slice ==9);
+new_slice(logicalIndices8) = 4;
+logicalIndices9 = (new_slice >9);
+new_slice(logicalIndices9) = 5;
+
+custom_colormap = [
+1 1 1;        
+1 1 1;
+1 1 1;
+1 1 1;
+1 1 1;    
+];
+
 
 %tryaa the original simulation result, estimation5 is the estimation
 
