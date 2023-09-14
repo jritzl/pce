@@ -1,0 +1,17 @@
+function x = generate_value(m, s, lower_limit)
+    % Generates a random value with the specified mean and variance, with an optional lower limit.
+    
+    % Use the Box-Muller transform to generate a random normal distribution
+    u1 = 1 - rand();
+    u2 = 1 - rand();
+    z = sqrt(-2.0 * log(u1)) * cos(2 * pi * u2);
+
+    % Scale and shift the distribution to have the desired mean and variance
+    x = z * sqrt(s) + m;
+
+    % Apply the lower limit if specified
+    if nargin == 3 && x < lower_limit
+        x = lower_limit;
+    end
+end
+
